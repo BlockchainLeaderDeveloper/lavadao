@@ -46,6 +46,9 @@ export const mim = new StableBond({
   networkAddrs: {
     [NetworkID.Mainnet]: {
       bondAddress: "0xD65E7D7BC57b544e6F5541D99Ee23Aea7990EC9f",
+      //0xD65E7D7BC57b544e6F5541D99Ee23Aea7990EC9f
+      //0xf53a04D4A06860f01391B71FC575aBa5d249E9a1
+      //0xf3c87ecd596de8f73c8c4887be25f1502624d534
       reserveAddress: "0x130966628846bfd36ff31a822705796e8cb8c18d",
     },
     [NetworkID.Testnet]: {
@@ -107,8 +110,8 @@ export const avax = new CustomBond({
 // });
 
 export const MIM_Valdao = new LPBond({
-  name: "mim_valdao_lp",
-  displayName: "MIM-Valdao LP",
+  name: "mim_lavadao_lp",
+  displayName: "MIM-Lavadao LP",
   bondToken: "DAI",
   bondIconSvg: "/images/tokens/mim-valdao.png",
   bondContractABI: BondBhdDaiContract,

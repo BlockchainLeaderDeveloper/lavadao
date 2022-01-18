@@ -209,7 +209,7 @@ function Stake() {
                       target="_blank"
                     >
                       <NewReleases viewBox="0 0 24 24" />
-                      <Typography>Migrate sVALDAO!</Typography>
+                      <Typography>Migrate sLAVADAO!</Typography>
                     </Link>
                   )}
                 </div>
@@ -256,7 +256,7 @@ function Stake() {
                           Current Index
                         </Typography>
                         <Typography variant="h4">
-                          {currentIndex ? <>{trim(currentIndex, 1)} VALDAO</> : <Skeleton width="150px" />}
+                          {currentIndex ? <>{trim(currentIndex, 1)} LAVADAO</> : <Skeleton width="150px" />}
                         </Typography>
                       </div>
                     </Grid>
@@ -270,7 +270,7 @@ function Stake() {
                     <div className="wallet-menu" id="wallet-menu">
                       {modalButton}
                     </div>
-                    <Typography variant="h6">Connect your wallet to stake VALDAO</Typography>
+                    <Typography variant="h6">Connect your wallet to stake LAVADAO</Typography>
                   </div>
                 ) : (
                   <>
@@ -347,7 +347,7 @@ function Stake() {
                                 onChangeStake("stake", false);
                               }}
                             >
-                              {txnButtonText(pendingTransactions, "staking", "Stake VALDAO")}
+                              {txnButtonText(pendingTransactions, "staking", "Stake LAVADAO")}
                             </Button>
                           ) : (
                             <Button

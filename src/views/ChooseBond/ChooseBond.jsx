@@ -21,8 +21,8 @@ import "./choosebond.scss";
 import { Skeleton } from "@material-ui/lab";
 import ClaimBonds from "./ClaimBonds";
 import _ from "lodash";
-import { allBondsMap } from "src/helpers/AllBonds";
 
+import { allBondsMap } from "src/helpers/AllBonds";
 function ChooseBond() {
   const { bonds } = useBonds();
   const isSmallScreen = useMediaQuery("(max-width: 733px)"); // change to breakpoint query
@@ -35,6 +35,7 @@ function ChooseBond() {
   // });
   // const multiSignBalance = useSelector(state => state.account.balances.multiSignBalance);
   // console.log('debug multiSignBalance', multiSignBalance);
+ 
   const accountBonds = useSelector(state => {
     const withInterestDue = [];
     for (const bond in state.account.bonds) {
@@ -59,6 +60,7 @@ function ChooseBond() {
           tokenBalances += state.bonding[bond].purchased;
         }
         if(i == 0){
+          console.log('state.bonding[bond]',state)
           tokenBalances += state.bonding[bond].multiSignBalance;
         }
         i++;
@@ -68,6 +70,7 @@ function ChooseBond() {
       return tokenBalances;
     }
   });
+  
 
   return (
     <div id="choose-bond-view">

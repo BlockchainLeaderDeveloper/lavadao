@@ -227,9 +227,9 @@ function BondPurchase({ bond, slippage, recipientAddress }) {
             <Typography>You Will Get</Typography>
             <Typography id="bond-value-id" className="price-data">
               {isSoldOut ? (
-                "0 VALDAO"
+                "0 LAVADAO"
               ) : (
-                <>{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.bondQuote, 4) || "0"} VALDAO`}</>
+                <>{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.bondQuote, 4) || "0"} LAVADAO`}</>
               )}
             </Typography>
           </div>
@@ -237,7 +237,7 @@ function BondPurchase({ bond, slippage, recipientAddress }) {
           <div className={`data-row`}>
             <Typography>Max You Can Buy</Typography>
             <Typography id="bond-value-id" className="price-data">
-              {isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.maxBondPrice, 4) || "0"} VALDAO`}
+              {isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.maxBondPrice, 4) || "0"} LAVADAO`}
             </Typography>
           </div>
 
@@ -247,7 +247,7 @@ function BondPurchase({ bond, slippage, recipientAddress }) {
               {isSoldOut ? (
                 "--"
               ) : (
-                <>{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.bondDiscount, 4) || "0"} VALDAO`}</>
+                <>{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.bondDiscount, 4) || "0"} LAVADAO`}</>
               )}
             </Typography>
           </div>
