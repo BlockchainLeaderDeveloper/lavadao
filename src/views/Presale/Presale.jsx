@@ -36,6 +36,9 @@ function Presale() {
   });
 
 
+
+
+
   const onSeekApproval = async token => {
     await dispatch(changeApproval({ address, token, provider, networkID: chainID }));
   };
@@ -54,6 +57,10 @@ function Presale() {
   const minCap = useSelector(state => {
     return state.account.presale && state.account.presale.minCap;
   });
+
+
+
+
 
   const cap = useSelector(state => {
     return state.account.presale && state.account.presale.cap;
@@ -100,6 +107,8 @@ function Presale() {
     [presaleAllowance],
   );
   const isAllowanceDataLoading = presaleAllowance == null;
+
+ 
 
 
 
@@ -246,7 +255,7 @@ function Presale() {
                         className="stake-button"
                         variant="contained"
                         color="primary"
-                        disabled={true}
+                        disabled={false}
                         onClick={() => {
                           onChangeDeposit("presale");
                         }}

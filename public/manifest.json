@@ -1,8 +1,8 @@
 {
-  "short_name": "Valhalla DAO",
+  "short_name": "Lava DAO",
   "start_url": ".",
   "homepage": "./",
-  "name": "Valhalla DAO",
+  "name": "Lava DAO",
   "launch_path": "/public/index.html",
   "icons": [
     {

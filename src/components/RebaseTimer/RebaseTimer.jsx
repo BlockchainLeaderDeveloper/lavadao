@@ -24,6 +24,10 @@ function RebaseTimer() {
     return state.app.endTime;
   });
 
+  console.log('currenttime',currentTime)
+  console.log('endtime',endTime)
+  console.log('rebaseString',rebaseString)
+
   function initializeTimer() {
     const rebaseTime = endTime;
     const seconds = secondsUntilBlock(currentTime, rebaseTime);

@@ -69,8 +69,8 @@ function BhdMenu() {
 
   const networkID = chainID;
 
-  const SVALDAO_ADDRESS = addresses[networkID].SVALDAO_ADDRESS;
-  const VALDAO_ADDRESS = addresses[networkID].VALDAO_ADDRESS;
+  const SLAVADAO_ADDRESS = addresses[networkID].SLAVADAO_ADDRESS;
+  const LAVADAO_ADDRESS = addresses[networkID].LAVADAO_ADDRESS;
   // const USDC_ADDRESS = addresses[networkID].USDC_ADDRESS;
 
   const handleClick = event => {
@@ -111,7 +111,7 @@ function BhdMenu() {
                   </Link>
 
                   {/* <Link
-                    href={`https://swap.spiritswap.finance/#/add/${USDC_ADDRESS}/${VALDAO_ADDRESS}`}
+                    href={`https://swap.spiritswap.finance/#/add/${USDC_ADDRESS}/${LAVADAO_ADDRESS}`}
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -147,7 +147,7 @@ function BhdMenu() {
                     <Divider color="secondary" />
                     <p>ADD TOKEN TO WALLET</p>
                     <Box display="flex" flexDirection="row" justifyContent="space-between">
-                      <Button variant="contained" color="secondary" onClick={addTokenToWallet("LAVA", VALDAO_ADDRESS)}>
+                      <Button variant="contained" color="secondary" onClick={addTokenToWallet("LAVA", LAVADAO_ADDRESS)}>
                         <SvgIcon
                           component={LavaTokenImg}
                           viewBox="0 0 32 32"
@@ -155,7 +155,7 @@ function BhdMenu() {
                         />
                         <Typography variant="body1">LAVA</Typography>
                       </Button>
-                      <Button variant="contained" color="secondary" onClick={addTokenToWallet("sLAVA", SVALDAO_ADDRESS)}>
+                      <Button variant="contained" color="secondary" onClick={addTokenToWallet("sLAVA", SLAVADAO_ADDRESS)}>
                         <SvgIcon
                           component={sLavaTokenImg}
                           viewBox="0 0 32 32"

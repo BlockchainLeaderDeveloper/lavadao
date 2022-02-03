@@ -45,7 +45,7 @@ export const mim = new StableBond({
   bondContractABI: DaiBondContract,
   networkAddrs: {
     [NetworkID.Mainnet]: {
-      bondAddress: "0xD65E7D7BC57b544e6F5541D99Ee23Aea7990EC9f",
+      bondAddress: "0x89B74a2Bf1da2eeC1D75f50F3Ed39d487a613485",
       //0xD65E7D7BC57b544e6F5541D99Ee23Aea7990EC9f
       //0xf53a04D4A06860f01391B71FC575aBa5d249E9a1
       //0xf3c87ecd596de8f73c8c4887be25f1502624d534
@@ -109,17 +109,19 @@ export const avax = new CustomBond({
 //     "https://pancakeswap.finance/add/0x1af3f329e8be154074d8769d1ffa4ee058b1dbc3/0x46F64ddf725090ce7442Ef7e7c7EB41AaED90424",
 // });
 
-export const MIM_Valdao = new LPBond({
+export const MIM_Lavadao = new LPBond({
   name: "mim_lavadao_lp",
   displayName: "MIM-Lavadao LP",
   bondToken: "DAI",
-  bondIconSvg: "/images/tokens/mim-valdao.png",
+  bondIconSvg: "/images/tokens/mim-lavadao.png",
   bondContractABI: BondBhdDaiContract,
   reserveContract: ReserveBhdDaiContract,
   networkAddrs: {
     [NetworkID.Mainnet]: {
-      bondAddress: "0x603fA1d56AfB5B07E5B5708256BD0B6f53b0179f",
-      reserveAddress: "0x34BFDf840a57f81F8b36a683fa6124d52E104C53",
+      bondAddress: "0x98c3c416eB90E84Fe6B02F6fa9439c7a92C75803",
+      reserveAddress: "0xf9dfce1e874af53a78227e07bd2189a6d2235c53",
+      // bondAddress: "0x603fA1d56AfB5B07E5B5708256BD0B6f53b0179f",
+      // reserveAddress: "0x34BFDf840a57f81F8b36a683fa6124d52E104C53",
     },
     [NetworkID.Testnet]: {
       bondAddress: "0x37346f0bdCd6B510aC3673007791C94f48CA0af4",
@@ -127,14 +129,14 @@ export const MIM_Valdao = new LPBond({
     },
   },
   lpUrl:
-    "https://traderjoexyz.com/#/pool/0x84506992349429DaC867B2168843FfcA263af6E8/0x130966628846BFd36ff31a822705796e8cb8C18D",
+    "https://traderjoexyz.com/#/pool/0x30b38a3Dec04E63f4BA5147C0Fdcd7F11df2700A/0x130966628846BFd36ff31a822705796e8cb8C18D",
 });
 
 // HOW TO ADD A NEW BOND:
 // Is it a stableCoin bond? use `new StableBond`
 // Is it an LP Bond? use `new LPBond`
 // Add new bonds to this array!!
-export const allBonds = [mim, MIM_Valdao];
+export const allBonds = [mim, MIM_Lavadao];
 export const allBondsMap = allBonds.reduce((prevVal, bond) => {
   return { ...prevVal, [bond.name]: bond };
 }, {});

@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   drawerPaper: {
-    width: drawerWidth,
+    // width: drawerWidth,
     borderRight: 0,
   },
 }));

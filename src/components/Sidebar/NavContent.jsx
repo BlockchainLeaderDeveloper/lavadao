@@ -5,10 +5,13 @@ import Social from "./Social";
 import externalUrls from "./externalUrls";
 import { ReactComponent as StakeIcon } from "../../assets/icons/stake.svg";
 import { ReactComponent as BondIcon } from "../../assets/icons/bond.svg";
-import { ReactComponent as PresaleIcon } from "../../assets/icons/presale.svg";
+import { ReactComponent as PresaleIcon } from "../../assets/icons/sun.svg";
 import { ReactComponent as DashboardIcon } from "../../assets/icons/dashboard.svg";
 import { ReactComponent as BigHeadIcon } from "../../assets/icons/bighead-nav-header.svg";
 import { ReactComponent as PoolTogetherIcon } from "../../assets/icons/33-together.svg";
+
+import { ReactComponent as infofill } from "../../assets/icons/info-fill.svg";
+
 import { trim, shorten } from "../../helpers";
 import { useAddress, useWeb3Context } from "src/hooks/web3Context";
 import useBonds from "../../hooks/Bonds";
@@ -77,7 +80,7 @@ function NavContent() {
                 </Typography>
               </Link>
 
-              {/* <Link
+              <Link
                 component={NavLink}
                 id="dash-nav"
                 to="/claim"
@@ -87,10 +90,10 @@ function NavContent() {
                 className={`button-dapp-menu bg-color-sidebar-btn ${isActive ? "active" : ""}`}
               >
                 <Typography variant="h6">
-                  <SvgIcon color="primary" component={PresaleIcon} />
+                  <SvgIcon color="primary" component={infofill} />
                   Claim
                 </Typography>
-              </Link> */}
+              </Link>
 
               <Link
                 component={NavLink}

@@ -43,14 +43,14 @@ export const loadAppDetails = createAsyncThunk(
       return;
     }
     
-    const sValdaoMainContract = new ethers.Contract(addresses[networkID].SVALDAO_ADDRESS as string, sBHD, provider);
-    const valdaoContract = new ethers.Contract(addresses[networkID].VALDAO_ADDRESS as string, ierc20Abi, provider);
-    const valdaoBalance = await valdaoContract.balanceOf(addresses[networkID].STAKING_ADDRESS);
+    const sLavadaoMainContract = new ethers.Contract(addresses[networkID].SLAVADAO_ADDRESS as string, sBHD, provider);
+    const lavadaoContract = new ethers.Contract(addresses[networkID].LAVADAO_ADDRESS as string, ierc20Abi, provider);
+    const lavadaoBalance = await lavadaoContract.balanceOf(addresses[networkID].STAKING_ADDRESS);
 
-    const stakingTVL = (valdaoBalance * marketPrice) / 1000000000;
-    const circ = await sValdaoMainContract.circulatingSupply();
+    const stakingTVL = (lavadaoBalance * marketPrice) / 1000000000;
+    const circ = await sLavadaoMainContract.circulatingSupply();
     const circSupply = circ / 1000000000;
-    const total = await valdaoContract.totalSupply();
+    const total = await lavadaoContract.totalSupply();
     const totalSupply = total / 1000000000;
     const marketCap = marketPrice * circSupply;
     // const runway = await calcRunway(circSupply, { networkID, provider });
@@ -85,6 +85,8 @@ export const loadAppDetails = createAsyncThunk(
     const endTime = epoch.endTime;
     console.log('debug-current', currentTime)
     console.log('debug-epoch', endTime)
+    console.log('epoch',epoch)
+    console.log('stakingRebase',stakingRebase)
 
     return {
       currentIndex: ethers.utils.formatUnits(currentIndex, "gwei"),
@@ -146,7 +148,7 @@ export const findOrLoadMarketPrice = createAsyncThunk(
 );
 
 /**
- * - fetches the VALDAO price from CoinGecko (via getTokenPrice)
+ * - fetches the LAVADAO price from CoinGecko (via getTokenPrice)
  * - falls back to fetch marketPrice from bhd-dai contract
  * - updates the App.slice when it runs
  */

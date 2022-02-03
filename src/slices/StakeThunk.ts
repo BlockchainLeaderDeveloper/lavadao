@@ -24,9 +24,9 @@ function alreadyApprovedToken(token: string, stakeAllowance: BigNumber, unstakeA
   let applicableAllowance = bigZero;
 
   // determine which allowance to check
-  if (token === "valdao") {
+  if (token === "lavadao") {
     applicableAllowance = stakeAllowance;
-  } else if (token === "svaldao") {
+  } else if (token === "slavadao") {
     applicableAllowance = unstakeAllowance;
   }
 
@@ -45,11 +45,11 @@ export const changeApproval = createAsyncThunk(
     }
     console.log('debug->token',token);
     const signer = provider.getSigner();
-    const valdaoContract = new ethers.Contract(addresses[networkID].VALDAO_ADDRESS as string, ierc20Abi, signer);
-    const svaldaoContract = new ethers.Contract(addresses[networkID].SVALDAO_ADDRESS as string, ierc20Abi, signer);
+    const lavadaoContract = new ethers.Contract(addresses[networkID].LAVADAO_ADDRESS as string, ierc20Abi, signer);
+    const slavadaoContract = new ethers.Contract(addresses[networkID].SLAVADAO_ADDRESS as string, ierc20Abi, signer);
     let approveTx;
-    let stakeAllowance = await valdaoContract.allowance(address, addresses[networkID].STAKING_HELPER_ADDRESS);
-    let unstakeAllowance = await svaldaoContract.allowance(address, addresses[networkID].STAKING_ADDRESS);
+    let stakeAllowance = await lavadaoContract.allowance(address, addresses[networkID].STAKING_HELPER_ADDRESS);
+    let unstakeAllowance = await slavadaoContract.allowance(address, addresses[networkID].STAKING_ADDRESS);
 
     // return early if approval has already happened
     if (alreadyApprovedToken(token, stakeAllowance, unstakeAllowance)) {
@@ -57,29 +57,29 @@ export const changeApproval = createAsyncThunk(
       return dispatch(
         fetchAccountSuccess({
           staking: {
-            valdaoStake: +stakeAllowance,
-            valdaoUnstake: +unstakeAllowance,
+            lavadaoStake: +stakeAllowance,
+            lavadaoUnstake: +unstakeAllowance,
           },
         }),
       );
     }
 
     try {
-      if (token === "valdao") {
+      if (token === "lavadao") {
         // won't run if stakeAllowance > 0
-        approveTx = await valdaoContract.approve(
+        approveTx = await lavadaoContract.approve(
           addresses[networkID].STAKING_HELPER_ADDRESS,
           ethers.utils.parseUnits("1000000000", "gwei").toString(),
         );
-      } else if (token === "svaldao") {
-        approveTx = await svaldaoContract.approve(
+      } else if (token === "slavadao") {
+        approveTx = await slavadaoContract.approve(
           addresses[networkID].STAKING_ADDRESS,
           ethers.utils.parseUnits("1000000000", "gwei").toString(),
         );
       }
 
-      const text = "Approve " + (token === "valdao" ? "Staking" : "Unstaking");
-      const pendingTxnType = token === "valdao" ? "approve_staking" : "approve_unstaking";
+      const text = "Approve " + (token === "lavadao" ? "Staking" : "Unstaking");
+      const pendingTxnType = token === "lavadao" ? "approve_staking" : "approve_unstaking";
       dispatch(fetchPendingTxns({ txnHash: approveTx.hash, text, type: pendingTxnType }));
 
       await approveTx.wait();
@@ -93,8 +93,8 @@ export const changeApproval = createAsyncThunk(
     }
 
     // go get fresh allowances
-    stakeAllowance = await valdaoContract.allowance(address, addresses[networkID].STAKING_HELPER_ADDRESS);
-    unstakeAllowance = await svaldaoContract.allowance(address, addresses[networkID].STAKING_ADDRESS);
+    stakeAllowance = await lavadaoContract.allowance(address, addresses[networkID].STAKING_HELPER_ADDRESS);
+    unstakeAllowance = await slavadaoContract.allowance(address, addresses[networkID].STAKING_ADDRESS);
 
     return dispatch(
       fetchAccountSuccess({

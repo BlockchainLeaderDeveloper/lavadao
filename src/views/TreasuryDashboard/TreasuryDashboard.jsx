@@ -30,6 +30,7 @@ function TreasuryDashboard() {
   const marketPrice = useSelector(state => {
     return state.app.marketPrice;
   });
+  console.log('marketPRice',marketPrice)
   const circSupply = useSelector(state => {
     return state.app.circSupply;
   });
@@ -40,6 +41,8 @@ function TreasuryDashboard() {
     return state.app.marketCap;
   });
 
+
+
   const currentIndex = useSelector(state => {
     return state.app.currentIndex;
   });
@@ -47,7 +50,7 @@ function TreasuryDashboard() {
   const runwayValue = useSelector(state => {
     return state.app.runway;
   });
-  const backingPerValdao = useSelector(state => {
+  const backingPerLavadao = useSelector(state => {
     if (state.bonding.loading == false) {
       let tokenBalances = 0;
       for (const bond in allBondsMap) {
@@ -58,6 +61,9 @@ function TreasuryDashboard() {
       return tokenBalances / state.app.circSupply;
     }
   });
+
+
+
 
   const wsBhdPrice = useSelector(state => {
     return state.app.marketPrice * state.app.currentIndex;
@@ -127,10 +133,10 @@ function TreasuryDashboard() {
 {/* 
               <Box className="metric wsoprice">
                 <Typography variant="h6" color="textSecondary">
-                  wsVALDAO Price
+                  wsLAVADAO Price
                   <InfoTooltip
                     message={
-                      "wsVALDAO = sVALDAO * index\n\nThe price of wsVALDAO is equal to the price of VALDAO multiplied by the current index"
+                      "wsLAVADAO = sLAVADAO * index\n\nThe price of wsLAVADAO is equal to the price of LAVADAO multiplied by the current index"
                     }
                   />
                 </Typography>
@@ -158,7 +164,7 @@ function TreasuryDashboard() {
                   Backing per LAVADAO
                 </Typography>
                 <Typography variant="h5">
-                  {backingPerValdao ? formatCurrency(backingPerValdao, 2) : <Skeleton type="text" />}
+                  {backingPerLavadao ? formatCurrency(backingPerLavadao, 2) : <Skeleton type="text" />}
                 </Typography>
               </Box>
 
@@ -180,7 +186,7 @@ function TreasuryDashboard() {
                   Runway
                   <InfoTooltip
                     message={
-                      "Runway, is the number of days sVALDAO emissions can be sustained at a given rate. Lower APY = longer runway"
+                      "Runway, is the number of days sLAVADAO emissions can be sustained at a given rate. Lower APY = longer runway"
                     }
                   />
                 </Typography>
@@ -271,7 +277,7 @@ function TreasuryDashboard() {
                   data={data}
                   dataKey={["treasuryBhdDaiPOL"]}
                   stopColor={[["rgba(128, 204, 131, 1)", "rgba(128, 204, 131, 0)"]]}
-                  headerText="Protocol Owned Liquidity VALDAO-DAI"
+                  headerText="Protocol Owned Liquidity LAVADAO-DAI"
                   headerSubText={`${data && trim(data[0].treasuryBhdDaiPOL, 2)}% `}
                   dataFormat="percent"
                   bulletpointColors={bulletpoints.pol}
@@ -291,7 +297,7 @@ function TreasuryDashboard() {
                   data={staked}
                   dataKey={["staked"]}
                   stopColor={[["#55EBC7", "#47ACEB"]]}
-                  headerText="VALDAO Staked"
+                  headerText="LAVADAO Staked"
                   dataFormat="percent"
                   headerSubText={`${staked && trim(staked[0].staked, 2)}% `}
                   isStaked={true}

@@ -108,7 +108,7 @@ export const changeDeposit = createAsyncThunk(
 
     const signer = provider.getSigner();
     const presale = new ethers.Contract(addresses[networkID].PRESALE_ADDRESS as string, Presale, signer);
-    console.log('debug->PresaleThunk.ts')
+    console.log('debug->PresaleThunk.ts',presale)
 
     let depositTx;
     let uaData: IUAData = {

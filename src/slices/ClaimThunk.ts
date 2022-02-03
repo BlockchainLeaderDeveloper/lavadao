@@ -45,7 +45,7 @@ export const changeApproval = createAsyncThunk(
     }
 
     const signer = provider.getSigner();
-    const pbhdContract = new ethers.Contract(addresses[networkID].AVALDAO_ADDRESS as string, pBHD, signer);
+    const pbhdContract = new ethers.Contract(addresses[networkID].ALAVADAO_ADDRESS as string, pBHD, signer);
     let approveTx;
     let claimAllowance = await pbhdContract.allowance(address, addresses[networkID].PRESALE_ADDRESS);
 
@@ -119,8 +119,9 @@ export const changeClaim = createAsyncThunk(
     try {
       uaData.type = "claim";
       console.log("claiming......");
-      console.log(ethers.utils.parseUnits(value, "gwei"));
-      console.log(address);
+      console.log('value',value);
+      console.log('ethers',ethers.utils.parseUnits(value, "gwei"))
+
       claimTx = await presale.withdraw(ethers.utils.parseUnits(value, "gwei"));
       const pendingTxnType = "claiming";
       uaData.txHash = claimTx.hash;
